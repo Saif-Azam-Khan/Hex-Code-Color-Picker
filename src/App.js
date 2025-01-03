@@ -1,16 +1,16 @@
 import React from "react";
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 
 const App = () => {
-  const [selction, setSelection] = useState('')
   const [ind, setInd] = useState(Math.floor(Math.random() * 3))
+  const [selction, setSelection] = useState('')
 
   const generateHexCodes = (...c) => {
     let hexNum=''
     c.forEach((color) => {
-      hexNum = hexNum + color.length === 1 ? "0" + color : color;
+      hexNum = hexNum + (color.length === 1 ? "0" + color : color);
     })
-    return "#" + hexNum.join("")
+    return "#" + hexNum.split(",").join("");
   }
 
   const generateRGBCode = () => {
@@ -26,7 +26,6 @@ const App = () => {
     for (let i = 0; i < 3; i++) {
       arr.push(generateRGBCode())
     }
-    console.log(arr)
     return arr
   }
 
